@@ -1,0 +1,6 @@
+packages/website/.next/*
+.nuxt/*
+node_modules
+.gitignore
+LICENSE
+package.json

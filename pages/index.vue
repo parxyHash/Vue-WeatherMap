@@ -1,69 +1,44 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        weathermap
-      </h1>
-      <h2 class="subtitle">
-        WeatherMap built on Vue, Nuxt &amp; Vuex
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div>
+    <button @click="increment">Increment</button>
+    <button @click="decrement">Decrement</button>
+    <p>{{ count }}</p>
   </div>
 </template>
 
 <script>
-  import Logo from '~/components/Logo.vue'
-
+  import { mapActions, mapGetters } from 'vuex';
   export default {
-    components: {
-      Logo,
+    computed: mapGetters(['count']),
+    methods: {
+      ...mapActions(['increment', 'decrement']),
     },
-  }
+    head() {
+      return {
+        title: 'Welcome to WeatherMaps',
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: 'The best WeatherMaps on this side of the Mississippi',
+          },
+        ],
+      };
+    },
+  };
 </script>
 
-<style>
-  .container {
-    margin: 0 auto;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .title {
-    font-family: 'Quicksand', 'Source Sans Pro', -apple-system,
-      BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-      sans-serif;
+<style scoped>
+  button {
+    cursor: pointer;
+    background-color: #fff;
     display: block;
-    font-weight: 300;
-    font-size: 100px;
-    color: #35495e;
-    letter-spacing: 1px;
+    padding: 7.5px 20px;
+    border: 1.75px solid rebeccapurple;
+    margin: 25px;
   }
-
-  .subtitle {
-    font-weight: 300;
-    font-size: 42px;
-    color: #526488;
-    word-spacing: 5px;
-    padding-bottom: 15px;
-  }
-
-  .links {
-    padding-top: 15px;
+  p {
+    margin: 0 70px;
+    font-size: 20px;
   }
 </style>
